@@ -5,10 +5,14 @@ import 'package:shop/model/cart_model.dart';
 
 import '../components/grocery_item_file.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-  
+  @override
+  State<HomeScreen>createState()=> _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +21,13 @@ class HomeScreen extends StatelessWidget {
       },
       ),
       ),
-      backgroundColor: const Color.fromARGB(255, 33, 6, 38),
-      child: Icon(Icons.shopping_bag),
+      backgroundColor:Color(0xFF03787C)
+,
+      
+     child: Icon(
+      Icons.shopping_bag,
+     color:Color.fromARGB(255, 245, 245, 240),
+),
       ),
       body: SafeArea(
         child: 
@@ -28,8 +37,12 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: 40),
        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
+          
           child: 
-        Text('Hello There')
+        Text('Hello There',
+        style:TextStyle(
+        color: Color(0xFF03787C),fontSize: 20,fontWeight: FontWeight.bold)
+,)
         ),
 
       const SizedBox(height: 4),
@@ -39,6 +52,7 @@ class HomeScreen extends StatelessWidget {
                    style:
              TextStyle(
               fontSize:20,
+              color: Color(0xFF03787C),
               fontWeight: FontWeight.bold,
               ) 
 
@@ -50,7 +64,7 @@ class HomeScreen extends StatelessWidget {
        const Padding(padding: EdgeInsets.symmetric(horizontal: 24.0),
 
        child: Divider(
-        thickness: 4,
+        thickness: 6,
        ),
             ),
 
@@ -61,6 +75,10 @@ class HomeScreen extends StatelessWidget {
                    style:
              TextStyle(
               fontSize:16,
+              color: Color(0xFF03787C),
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic
+
               ) 
 
        ),
@@ -77,6 +95,8 @@ class HomeScreen extends StatelessWidget {
           itemPrice: value.groceryItems[index][1],
           imagePath: value.groceryItems[index][2],
           color: value.groceryItems[index][3],
+          
+          
           onPressed: () {
             Provider.of<CartModel>(context, listen: false).addItemsToCart(index);
           },
@@ -84,7 +104,10 @@ class HomeScreen extends StatelessWidget {
         );
        });
         }
-       ))
+       )
+       
+       
+       )
 
 
 
